@@ -1,4 +1,7 @@
 <?php
+	
+namespace Battis\Educoder;
+	
 /**
  * Pest is a REST client for PHP.
  *

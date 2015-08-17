@@ -1,4 +1,7 @@
 <?php
+	
+namespace Battis\Educoder;
+	
 /**
  * Pest is a REST client for PHP.
  *
@@ -549,7 +552,7 @@ class Pest
     }
 }
 
-class Pest_Exception extends Exception
+class Pest_Exception extends \Exception
 {}
 class Pest_UnknownResponse extends Pest_Exception
 {}
