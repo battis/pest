@@ -1,7 +1,9 @@
 <?php
-	
+
 namespace Battis\Educoder;
-	
+
+use \Exception;
+
 /**
  * Pest is a REST client for PHP.
  *
@@ -130,7 +132,7 @@ class Pest
             $this->curl_opts[CURLOPT_PROXYUSERPWD] = $user . ":" . $pass;
         }
     }
-    
+
     /**
 	 * Allow overriding of `http_build_query()` for idiosyncratic APIs
 	 * @param mixed $data
@@ -159,7 +161,7 @@ class Pest
         }
 
         $curl_opts = $this->curl_opts;
-        
+
         $curl_opts[CURLOPT_HTTPHEADER] = $this->prepHeaders($headers);
 
         $curl = $this->prepRequest($curl_opts, $url);
@@ -205,7 +207,7 @@ class Pest
 
         return $curl;
     }
-    
+
     /**
      * Determines if a given array is numerically indexed or not
      *
@@ -216,7 +218,7 @@ class Pest
     {
         return !(bool)count(array_filter(array_keys($array), 'is_string'));
     }
-    
+
     /**
      * Flatten headers from an associative array to a numerically indexed array of "Name: Value"
      * style entries like CURLOPT_HTTPHEADER expects. Numerically indexed arrays are not modified.
@@ -229,12 +231,12 @@ class Pest
         if ($this->_isNumericallyIndexedArray($headers)) {
             return $headers;
         }
-        
+
         $flattened = array();
         foreach ($headers as $name => $value) {
              $flattened[] = $name . ': ' . $value;
         }
-        
+
         return $flattened;
     }
 
@@ -552,7 +554,7 @@ class Pest
     }
 }
 
-class Pest_Exception extends \Exception
+class Pest_Exception extends Exception
 {}
 class Pest_UnknownResponse extends Pest_Exception
 {}
